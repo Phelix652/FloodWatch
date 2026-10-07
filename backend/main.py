@@ -16,7 +16,11 @@ app.add_middleware(
 )
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-DATABASE = str(BASE_DIR / "database" / "floodwatch.db")
+
+DATABASE_DIR = BASE_DIR / "database"
+DATABASE_DIR.mkdir(parents=True, exist_ok=True)
+
+DATABASE = str(DATABASE_DIR / "floodwatch.db")
 
 
 def get_connection():
