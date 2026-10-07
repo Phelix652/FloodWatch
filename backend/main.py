@@ -2,10 +2,9 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import sqlite3
-
+from pathlib import Path
 
 app = FastAPI()
-
 
 # Allow frontend to communicate with backend
 app.add_middleware(
@@ -16,12 +15,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
-# =========================
-# DATABASE
-# =========================
-
-DATABASE = "../database/floodwatch.db"
+BASE_DIR = Path(__file__).resolve().parent.parent
+DATABASE = str(BASE_DIR / "database" / "floodwatch.db")
 
 
 def get_connection():
