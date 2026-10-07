@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FloodWatch</title>
+
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+            🌧️ FloodWatch
+        </div>
+
+        <nav>
+            <a href="#">Map</a>
+            <a href="#">Reports</a>
+            <a href="#">About</a>
+        </nav>
+    </header>
+
+
+    <main>
+
+        <section class="hero">
+
+            <div>
+                <h1>FloodWatch</h1>
+
+                <p>
+                    Monitor and report flood conditions in your area.
+                </p>
+
+                    <button id="reportButton">
+                        📍 Report Flood
+                    </button>
+
+                    <div id="reportForm" class="report-form">
+
+                        <h2>Report Flood</h2>
+
+                        <label>Location</label>
+                        <input type="text" id="location" placeholder="Example: Dawei">
+
+                        <div id="selectedLocation">
+                            📍 Click on the map to select a flood location.
+                        </div>
+
+                        <input
+                            type="hidden"
+                            id="latitude"
+                        >
+
+                        <input
+                            type="hidden"
+                            id="longitude"
+                        >                        
+
+                        <label>Severity</label>
+                        <select id="severity">
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                        </select>
+
+                        <label>Water Level (meters)</label>
+                        <input type="number" id="waterLevel" step="0.1" placeholder="Example: 1.2">
+
+                        <label>Description</label>
+                        <textarea id="description" placeholder="Describe the flood..."></textarea>
+
+                        <button id="submitReport">
+                            Submit Report
+                        </button>
+
+                    </div>
+            </div>
+
+        </section>
+
+        <section class="dashboard">
+
+            <div class="stat-card">
+                <h3>Total Reports</h3>
+                <p id="totalReports">0</p>
+            </div>
+
+            <div class="stat-card high">
+                <h3>🔴 High Risk</h3>
+                <p id="highReports">0</p>
+            </div>
+
+            <div class="stat-card medium">
+                <h3>🟠 Medium Risk</h3>
+                <p id="mediumReports">0</p>
+            </div>
+
+            <div class="stat-card low">
+                <h3>🟡 Low Risk</h3>
+                <p id="lowReports">0</p>
+            </div>
+
+        </section>
+
+        <section class="map-section">
+
+            <h2>Flood Map</h2>
+
+            <div id="map">
+                Map will appear here
+            </div>
+
+        </section>
+
+
+        <section class="legend">
+
+            <div>
+                🔴 High Risk
+            </div>
+
+            <div>
+                🟠 Medium Risk
+            </div>
+
+            <div>
+                🟡 Low Risk
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        <p>FloodWatch © 2026</p>
+    </footer>
+
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+    </script>
+
+    <script src="app.js"></script>
+
+</body>
+</html>
