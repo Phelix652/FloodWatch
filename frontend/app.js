@@ -1,3 +1,5 @@
+const API_URL = "https://floodwatch-api-dbms.onrender.com";
+
 // Create the map
 const map = L.map("map").setView([16.8409, 96.1735], 7);
 
@@ -124,7 +126,7 @@ submitReport.addEventListener("click", async function () {
     try {
 
         const response = await fetch(
-            "http://127.0.0.1:8000/reports",
+            `${API_URL}/reports`,
             {
                 method: "POST",
 
@@ -136,28 +138,10 @@ submitReport.addEventListener("click", async function () {
             }
         );
 
-
         const data = await response.json();
 
 
         console.log("Backend response:", data);
-
-
-        // Add marker to map
-        L.marker([latitude, longitude])
-            .addTo(map)
-            .bindPopup(`
-                <b>🌧️ Flood Report</b><br><br>
-
-                <b>Location:</b> ${location}<br>
-
-                <b>Severity:</b> ${severity}<br>
-
-                <b>Water Level:</b> ${waterLevel} m<br><br>
-
-                ${description}
-            `)
-            .openPopup();
 
 
         alert("Flood report sent to backend!");
@@ -181,9 +165,7 @@ submitReport.addEventListener("click", async function () {
 
 async function loadReports() {
     try {
-        const response = await fetch(
-            "http://127.0.0.1:8000/reports"
-        );
+        const response = await fetch(`${API_URL}/reports`);
 
         const data = await response.json();
 
@@ -243,9 +225,7 @@ async function loadStats() {
 
     try {
 
-        const response = await fetch(
-            "http://127.0.0.1:8000/stats"
-        );
+        const response = await fetch(`${API_URL}/stats`);
 
         const data = await response.json();
 
@@ -271,7 +251,3 @@ async function loadStats() {
 }
 
 loadStats();
-
-
-// Load reports when page opens
-loadReports();
